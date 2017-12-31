@@ -1,0 +1,310 @@
+kendo UI:
+automobile app
+all clients availabe makes and model
+maintaining the data
+mobile and tablet web views
+REST end points
+
+DATA MODEL:
+
+make:
+ --car
+
+model:
+ --engine type
+
+model image:
+ --pic of car
+
+order:
+  ---delivery one
+
+development process:
+
+--agile...ish
+--JIT resuirments
+--Sprints
+--use stories
+--tasks
+--trello
+
+trello(free):
+--project development tool
+--project management tool
+--free, manage projcet, virutal scrum board
+--tasks, documentation
+
+The Tools:
+
+ide-visual studio
+asp.net mvc 4
+kendoui,html,javascript
+
+
+menu:
+
+
+drop down in header:
+
+<div>
+<ul id="menu">
+<li>maintance
+<ul>
+<li><a href="/maintance/makes">Makes</a></li>
+<li><a href="/maintance/models">Models</a></li>
+</ul>
+</li>
+</div>
+
+
+api ajax:
+
+javascript services:
+
+kmj23
+$(function ()){
+$.ajax({
+url:"/Api/Makers/;
+dataTypes:"json",
+types:"GET",
+success:function(makes)
+{
+makes.forEach(function(make)){
+
+
+
+
+model:
+
+make: dropdown
+year:dropdown
+model:
+engine:
+break horsepower:dropdown
+0-60 time:dropdown
+Top Speed:dropdown
+Bose Price:
+Description:
+
+<div id="model" class="inputcontailner">
+<label for="make">Make</lable>
+<select id="make"s name="make" placeholder="select make"></select></br>
+<label>
+
+<label for="year">year</label>
+<input id="year" name="year" type="text" placeholder="year"/></br>
+
+<label for="model">model</label>
+<input id="year" name="model" type="text" placeholder="year"/></br>
+
+<label for="Engine">Engine</label>
+<input id="engine" name="model" type="text" placeholder="year"/></br>
+
+<label for="Engine">Engine</label>
+<input id="engine" name="model" type="text" placeholder="year"/></br>
+
+<div id="images"></div>
+<br/>
+
+<input type="save" type="button" class="k-button" values="save"/></br>
+<span id="status"></span>
+
+</div>
+
+
+
+
+modelDetails.js:
+
+$(function(){
+$("#year").kendoNumericTextBox({format:"#",decimals:0});
+$("#breakHorsePower").kendoNumericTextBox({format:"#",decimals:0});
+$("#zeroToSixty").kendoNumericTextBox({step:0.01});
+$("#basePrice").kendoNumericTextBox({format:"c"});
+});
+
+
+kendo ui with jsp:
+
+<@taglib prefix="kando" url="http://www.kendoui.com/jsp/tags"%>
+
+<% java.util.List<String> data=new java.util.ArrayList<String>();%>
+data.add("foo");
+data.add("bar");
+data.add("baz");
+%>
+
+<p><%= data%>
+
+configuration of remote data source
+lazy loading data
+server-side paging
+custom grid editing
+
+JSP WRAPPERS:
+
+retrieving data from a database
+displaying the data in a kendo UI control
+handling hierarchical data
+
+kendo ui + hibernate:
+
+steps:
+
+kendoUI is in the browser
+Data is on the server
+create a url that will return the data from the server
+xml
+json
+
+json:
+->easier to read
+->gson.2.2.2 jar
+
+servelts:
+->employees
+
+doGet()
+{
+List<models.Employee> employees=_repository.listEmployees();
+Gson gson=new Gson();
+response.setContentType("application/json");
+response.getWriter().writer(gson.toJson(employees));
+}
+catch(exception e){
+response.sendError(500);
+e.printStackTrace();
+}
+
+
+connect to remote data:
+
+datasrouce-transport:
+
+browser tool:
+F12:
+network:
+->employees --> Respons|cookies|timing|headers|preview
+
+
+kend UI HANDLING HIERARCHICAL DATA:
+
+
+Tree View:
+
+->implementing the tree view:
+->data  needs to be in the rightr format:
+->Currently returns all employees
+->Lazy Loading data
+->returns employee with the specified manager id
+->send relevant data just-in-time
+->great performance benefits
+
+
+servlet:
+
+doget()
+{
+int id=request.getParameter("EmployeeID")=null ? 0 :
+Interger.parseInt(request.getParameter("EmployeeID"));
+
+}
+
+
+data access layer:
+->collection of employee
+
+->getting database data into the grid:
+->displaying relationships
+->client and server-side paging
+->customizing the paging intergface
+
+<h3>grid</h3>
+<kendo:grid name="products">
+<kendo:datasource>
+<kendo:datasource-transport>
+<kendo:datasource-transport-read uri="api/products">
+</kendo:datasource-transport-read>
+</kendo:datasource-transport>
+</kendo:datasource>
+
+<kendo:grid-column title="Name" field="prodcutName"></kendo:grid-columm>
+<kendo:grid-column title="Supplier" field="supplier"></kendo:grid-columm>
+<kendo:grid-column title="category" field="category"></kendo:grid-columm>
+<kendo:grid-column title="InStoock" field="prodcutName"></kendo:grid-columm>
+<kendo:grid-column title="Price" field="Price"></kendo:grid-columm>
+
+
+grid-paging:
+
+->Client-side Paging 
+  1.All data is stored in the browser
+  2.Kendo UI handles all the paging
+->Server-side Paging
+  1.kendoUI works with the server to do paging
+
+client side:
+
+->pageable
+->pageSize
+
+<kendo:grid name="products" pageable="true">
+<kendo:dataSource pageSize="5">
+</kendo:datasource>
+</kendo:grid>
+
+
+server-side paging:
+
+
+<kendo:grid name="products" pageable="true" serverPaging="true">
+
+
+total no of page:
+
+java side
+
+public int getCount(){
+int total=0;
+preparedStatement stmt=null;
+ResultSet rs=null;
+try{
+String sql="SELECT COUNT(*) AS TOTAL FROM PRODUCTS";
+stmt=conn.preparedStatement(sql);
+rs=stmt.executeQuery();
+while(rs.next())
+{
+total=rs.getInt("Total");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
